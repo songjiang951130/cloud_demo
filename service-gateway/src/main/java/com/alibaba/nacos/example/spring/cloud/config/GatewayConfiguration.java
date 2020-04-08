@@ -66,7 +66,7 @@ public class GatewayConfiguration {
         Set<GatewayFlowRule> rules = new HashSet<>();
         //此处的 resource 要等于 网关配置规则的id
         rules.add(new GatewayFlowRule("client_consumer1_sentinel")
-                .setCount(20)
+                .setCount(2)
                 .setIntervalSec(1)
         );
 
