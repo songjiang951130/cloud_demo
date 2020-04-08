@@ -9,10 +9,10 @@ spring:
   cloud:
     nacos:
       config:
-        namespace: 589877db-eefd-494e-9e1b-382afb66f635
+        namespace: b3ffea7a-2f29-436f-891a-fd1da83a79e7
         server-addr: 127.0.0.1:8848
         file-extension: yml
       discovery:
-        namespace: 589877db-eefd-494e-9e1b-382afb66f635
+        namespace: b3ffea7a-2f29-436f-891a-fd1da83a79e7
         server-addr: 127.0.0.1:8848
         file-extension: yml
