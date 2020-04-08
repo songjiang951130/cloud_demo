@@ -15,8 +15,7 @@ class EchoController {
 
     @RequestMapping("/echo")
     public String service(@RequestParam String string) {
-        System.out.println("visit");
-        return restTemplate.getForObject("http://service-provider1/echo/" + string, String.class);
+        return "service[client-consumer] :" + string;
     }
 
     @RequestMapping("/prod")
@@ -30,13 +29,14 @@ class EchoController {
 
     /**
      * 定义sentinel资源
+     *
      * @param string
      * @return
      */
     @SentinelResource(value = "echoController", blockHandler = "error")
     @RequestMapping("/error_msg")
     public String serviceError(@RequestParam String string) {
-            throw new RuntimeException("run error");
+        throw new RuntimeException("run error");
     }
 
     public String error(String id, BlockException ex) {
