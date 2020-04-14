@@ -4,6 +4,7 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class TestService {
     @SentinelResource(value = "thread", blockHandler = "error")

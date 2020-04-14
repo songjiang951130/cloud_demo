@@ -72,10 +72,9 @@ public class GatewayConfiguration {
 
         rules.add(new GatewayFlowRule("client_consumer1_sentinel_thread")
                         .setGrade(RuleConstant.FLOW_GRADE_THREAD)
-                        .setCount(2)
+                        .setCount(5)
                         .setIntervalSec(1)
                         .setControlBehavior(RuleConstant.CONTROL_BEHAVIOR_RATE_LIMITER)
-//                .setResourceMode()
         );
         GatewayRuleManager.loadRules(rules);
     }
@@ -86,10 +85,14 @@ public class GatewayConfiguration {
     private void initDegradeRule() {
         List<DegradeRule> rules = new ArrayList<>();
         DegradeRule rule = new DegradeRule();
-        rule.setResource("client_consumer1_sentinel");// 设置资源名，资源名是限流规则的作用对象
-        rule.setCount(10);// 设置平均响应时间阈值为10ms
-        rule.setGrade(RuleConstant.DEGRADE_GRADE_RT);// 设置降级模式，根据平均响应时间降级
-        rule.setTimeWindow(60);// 设置降级的时间，以s为单位
+        // 设置资源名，资源名是限流规则的作用对象
+        rule.setResource("client_consumer1_sentinel");
+        // 设置平均响应时间阈值为10ms
+        rule.setCount(10);
+        // 设置降级模式，根据平均响应时间降级
+        rule.setGrade(RuleConstant.DEGRADE_GRADE_RT);
+        // 设置降级的时间，以s为单位
+        rule.setTimeWindow(60);
         rules.add(rule);
         //还可以根据异常比率进行降级
         DegradeRuleManager.loadRules(rules);
